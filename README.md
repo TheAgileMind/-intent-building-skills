@@ -1,6 +1,6 @@
 # Intent-Driven Building — Claude Code Guidelines
 
-Seven principles for AI-assisted building. Fork of [forrestchang/andrej-karpathy-skills](https://github.com/forrestchang/andrej-karpathy-skills), extending Karpathy's 4 principles with intent-driven execution, evidence discipline, foundation-first architecture, and multi-agent coordination.
+Seven principles for AI-assisted building. Extending Karpathy's 4 principles with intent-driven execution, evidence discipline, foundation-first architecture, and multi-agent coordination.
 
 ## The Problems (Karpathy's original observations)
 
