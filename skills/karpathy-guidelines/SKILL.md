@@ -1,67 +1,106 @@
 ---
-name: karpathy-guidelines
-description: Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria.
+name: intent-driven-building
+description: >-
+  Intent-driven building guidelines that extend Karpathy's 4 principles with
+  evidence discipline, foundation-first architecture, and multi-agent coordination.
+  Use on every task — coding, content, architecture, research. Triggers on any
+  implementation work. The 7 principles: Intent Before Implementation, Evidence
+  Over Assumptions, Minimum Viable Architecture, Surgical Precision, Verify Before
+  Claiming Done, Foundation First Then Skills, Coordinate Across Agents.
 license: MIT
 ---
 
-# Karpathy Guidelines
+# Intent-Driven Building
 
-Behavioral guidelines to reduce common LLM coding mistakes, derived from [Andrej Karpathy's observations](https://x.com/karpathy/status/2015883857489522876) on LLM coding pitfalls.
+Seven principles for AI-assisted building. Extends [Karpathy's 4 principles](https://x.com/karpathy/status/2015883857489522876) with intent-driven execution, evidence grounding, and multi-agent coordination.
 
-**Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
+**Use on every task.** Not just coding — content, architecture, research, multi-agent work.
 
-## 1. Think Before Coding
+**Tradeoff:** Biases toward intentionality over speed. For trivial tasks, use judgment.
 
-**Don't assume. Don't hide confusion. Surface tradeoffs.**
+---
 
-Before implementing:
-- State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them - don't pick silently.
-- If a simpler approach exists, say so. Push back when warranted.
-- If something is unclear, stop. Name what's confusing. Ask.
+## Quick reference
 
-## 2. Simplicity First
+| # | Principle | One-line test |
+|---|---|---|
+| 1 | **Intent Before Implementation** | Can you state the mission in one sentence? |
+| 2 | **Evidence Over Assumptions** | Is this tagged [empirical], [predicted], or [speculative]? |
+| 3 | **Minimum Viable Architecture** | Would a senior engineer say this is overcomplicated? |
+| 4 | **Surgical Precision** | Does every changed line trace to the request? |
+| 5 | **Verify Before Claiming Done** | Did you run the check and read the output? |
+| 6 | **Foundation First, Then Skills** | Did you load context before producing output? |
+| 7 | **Coordinate Across Agents** | Did you check for locks and signal your intent? |
 
-**Minimum code that solves the problem. Nothing speculative.**
+---
 
-- No features beyond what was asked.
+## 1. Intent Before Implementation
+
+**Define the end state, not the steps.**
+
+- State the mission in one sentence: "Building X so Y happens for Z."
+- State assumptions explicitly. If uncertain, ask.
+- Multiple interpretations? Present them — don't pick silently.
+- Simpler approach exists? Say so. Push back.
+- Confused? Stop. Name what's unclear.
+- Existing context (project CLAUDE.md, foundation files, journals)? Load it first.
+
+## 2. Evidence Over Assumptions
+
+**Tag what you know vs what you're guessing.**
+
+- Tag confidence: `[empirical]` / `[predicted]` / `[speculative]`
+- Predicted claims get an expiration. No permanent speculation.
+- Source of truth > copies. Find the canonical source.
+- Never fabricate specifics.
+- Research before prescribing.
+
+## 3. Minimum Viable Architecture
+
+**Solve today's problem simply.**
+
+- Nothing beyond what was asked.
 - No abstractions for single-use code.
-- No "flexibility" or "configurability" that wasn't requested.
-- No error handling for impossible scenarios.
-- If you write 200 lines and it could be 50, rewrite it.
+- No speculative flexibility.
+- 200 lines → 50? Rewrite.
+- Consolidate > fragment. 4 structured files > 28 scattered.
+- First draft captures. Second pass cuts. Ship the second pass.
 
-Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+## 4. Surgical Precision
 
-## 3. Surgical Changes
+**Touch only what you must.**
 
-**Touch only what you must. Clean up only your own mess.**
+- Don't improve adjacent code, comments, formatting.
+- Match existing style.
+- Remove only what YOUR changes orphaned.
+- Check for locks before writing to shared files.
+- Anti-contamination is architectural — scope awareness prevents cross-bleed.
 
-When editing existing code:
-- Don't "improve" adjacent code, comments, or formatting.
-- Don't refactor things that aren't broken.
-- Match existing style, even if you'd do it differently.
-- If you notice unrelated dead code, mention it - don't delete it.
+## 5. Verify Before Claiming Done
 
-When your changes create orphans:
-- Remove imports/variables/functions that YOUR changes made unused.
-- Don't remove pre-existing dead code unless asked.
+**Evidence before assertions.**
 
-The test: Every changed line should trace directly to the user's request.
+- Transform tasks to verifiable goals with success criteria.
+- Never say "done" without running verification.
+- Build verification into architecture (contract tests, freshness checks, loud failures).
+- Strong criteria enable independent looping.
 
-## 4. Goal-Driven Execution
+## 6. Foundation First, Then Skills
 
-**Define success criteria. Loop until verified.**
+**Build shared context before features.**
 
-Transform tasks into verifiable goals:
-- "Add validation" → "Write tests for invalid inputs, then make them pass"
-- "Fix the bug" → "Write a test that reproduces it, then make it pass"
-- "Refactor X" → "Ensure tests pass before and after"
+- Context layer before execution layer.
+- Skills declare their dependencies — context doesn't list consumers.
+- Updates to foundation compound across every skill.
+- Selective loading, not full loading.
+- Context has a freshness contract.
 
-For multi-step tasks, state a brief plan:
-```
-1. [Step] → verify: [check]
-2. [Step] → verify: [check]
-3. [Step] → verify: [check]
-```
+## 7. Coordinate Across Agents
 
-Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+**Multiple agents on same project? Coordinate explicitly.**
+
+- Check locks/markers before writing.
+- Declare intent before modifying shared files.
+- Release explicitly when done.
+- Respect scope boundaries — mention, don't fix.
+- Produce handoff-ready output.

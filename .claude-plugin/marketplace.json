@@ -1,27 +1,32 @@
 {
-  "name": "karpathy-skills",
-  "id": "karpathy-skills",
+  "name": "intent-driven-building",
+  "id": "intent-driven-building",
   "owner": {
-    "name": "forrestchang"
+    "name": "TheAgileMind"
   },
   "metadata": {
-    "description": "Behavioral guidelines to reduce common LLM coding mistakes, derived from Andrej Karpathy's observations",
+    "description": "Intent-driven building guidelines extending Karpathy's 4 principles with evidence discipline, foundation-first architecture, and multi-agent coordination",
     "version": "1.0.0"
   },
   "plugins": [
     {
-      "name": "andrej-karpathy-skills",
+      "name": "intent-driven-building",
       "source": "./",
-      "description": "Behavioral guidelines to reduce common LLM coding mistakes: Think Before Coding, Simplicity First, Surgical Changes, Goal-Driven Execution",
+      "description": "7 principles for AI-assisted building: Intent Before Implementation, Evidence Over Assumptions, Minimum Viable Architecture, Surgical Precision, Verify Before Claiming Done, Foundation First Then Skills, Coordinate Across Agents",
       "version": "1.0.0",
       "author": {
-        "name": "forrestchang"
+        "name": "TheAgileMind"
       },
       "keywords": [
         "guidelines",
         "best-practices",
         "coding",
-        "karpathy"
+        "karpathy",
+        "intent-driven",
+        "foundation-layer",
+        "multi-agent",
+        "evidence-based",
+        "commander-intent"
       ],
       "category": "workflow"
     }

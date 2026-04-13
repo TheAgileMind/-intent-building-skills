@@ -1,11 +1,13 @@
 {
-  "name": "andrej-karpathy-skills",
-  "description": "Behavioral guidelines to reduce common LLM coding mistakes, derived from Andrej Karpathy's observations on LLM coding pitfalls",
+  "name": "intent-driven-building",
+  "description": "Intent-driven building guidelines extending Karpathy's 4 principles with evidence discipline, foundation-first architecture, and multi-agent coordination. 7 principles for AI-assisted building.",
   "version": "1.0.0",
   "author": {
-    "name": "forrestchang"
+    "name": "TheAgileMind",
+    "original_author": "forrestchang (Karpathy's 4 principles)",
+    "extended_by": "David Marshall"
   },
   "license": "MIT",
-  "keywords": ["guidelines", "best-practices", "coding", "karpathy"],
+  "keywords": ["guidelines", "best-practices", "coding", "karpathy", "intent-driven", "foundation-layer", "multi-agent", "evidence-based"],
   "skills": ["./skills/karpathy-guidelines"]
 }
